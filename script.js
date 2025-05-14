@@ -4,9 +4,12 @@ let randomNumber = Math.trunc(Math.random() * 20) + 1;
 let score = 20;
 let highscore = 0;
 
+function displayMessage(message) {
+  document.querySelector('.message').textContent = message;
+}
+
 const check = document.querySelector('.check');
-// let randomNumberDisplay = (document.querySelector('.number').textContent =
-//   randomNumber);
+
 let chances = document.querySelector('.score');
 let message = document.querySelector('.message');
 const guessField = document.querySelector('.guessField');
@@ -23,13 +26,15 @@ check.addEventListener('click', function () {
   if (!guess) {
     message.textContent = '⛔ No number!';
   } else if (guess > 20 || guess < 1) {
-    message.textContent = '⛔ Number out of range!';
+    // message.textContent = '⛔ Number out of range!';
+    displayMessage;
     score--;
     chances.textContent = score;
   } else if (guess !== randomNumber) {
     if (score > 1) {
-      message.textContent =
-        guess < randomNumber ? '📉 Too low!' : '📈 Too high!';
+      // message.textContent =
+      //   guess < randomNumber ? '📉 Too low!' : '📈 Too high!';
+      displayMessage(guess < randomNumber ? '📉 Too low!' : '📈 Too high!');
       score--;
       chances.textContent = score;
     } else {
