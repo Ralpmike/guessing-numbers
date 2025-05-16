@@ -25,11 +25,10 @@ check.addEventListener('click', function () {
 
   if (!guess) {
     message.textContent = '⛔ No number!';
-  } else if (guess > 20 || guess < 1) {
+  } else if (guess > 20 || guess < 1 || guess === 0) {
     // message.textContent = '⛔ Number out of range!';
-    displayMessage;
-    score--;
-    chances.textContent = score;
+    displayMessage('Out of range!');
+    document.querySelector('.guess').value = '';
   } else if (guess !== randomNumber) {
     if (score > 1) {
       // message.textContent =
@@ -43,27 +42,6 @@ check.addEventListener('click', function () {
       // check.disabled = true;
     }
   }
-
-  // else if (guess > randomNumber) {
-  //   if (score > 1) {
-  //     message.textContent = '📈 Too high!';
-  //     score--;
-  //     chances.textContent = score;
-  //   } else {
-  //     message.textContent = '💥Game over!';
-  //     chances.textContent = 0;
-  //     // check.disabled = true;
-  //   }
-  // } else if (guess < randomNumber) {
-  //   if (score > 1) {
-  //     message.textContent = '📉 Too low!';
-  //     score--;
-  //     chances.textContent = score;
-  //   } else {
-  //     message.textContent = '💥Game over!';
-  //     chances.textContent = 0;
-  //   }
-  // }
   //? when the guess is correct
   else if (guess === randomNumber) {
     message.textContent = '🎉 Correct number!';
